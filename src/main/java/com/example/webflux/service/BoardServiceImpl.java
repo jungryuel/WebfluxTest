@@ -1,6 +1,7 @@
 package com.example.webflux.service;
 
 import com.example.webflux.domain.Board;
+import com.example.webflux.dto.BoardResponse;
 import com.example.webflux.dto.CreateBoard;
 import com.example.webflux.dto.UpdateBoard;
 import com.example.webflux.repository.BoardRepository;
@@ -19,8 +20,8 @@ public class BoardServiceImpl implements BoardService{
     }
 
     @Override
-    public Flux<Board> getAll() {
-        return boardRepository.findAll();
+    public Flux<BoardResponse> getAll() {
+        return boardRepository.findAll().map(BoardResponse :: from);
     }
 
     @Override

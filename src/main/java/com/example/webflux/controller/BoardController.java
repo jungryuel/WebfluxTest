@@ -1,6 +1,7 @@
 package com.example.webflux.controller;
 
 import com.example.webflux.domain.Board;
+import com.example.webflux.dto.BoardResponse;
 import com.example.webflux.dto.CreateBoard;
 import com.example.webflux.dto.UpdateBoard;
 import com.example.webflux.service.BoardService;
@@ -25,12 +26,12 @@ public class BoardController {
     }
 
     @GetMapping
-    public Flux<Board> getAll(){
+    public Flux<BoardResponse> getAll(){
         return boardService.getAll();
     }
 
     @GetMapping("/{id}")
-    public Mono<Board> getAll(@PathVariable Long id){
+    public Mono<Board> getId(@PathVariable Long id){
         return boardService.getBoard(id);
     }
 
